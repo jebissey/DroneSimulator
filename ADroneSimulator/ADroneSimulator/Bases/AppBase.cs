@@ -15,6 +15,7 @@ internal static class AppBase
     {
         AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnApplicationExit!);
         AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+        TaskScheduler.UnobservedTaskException += UnobservedTaskException;
 
         Log.Logger = new LoggerConfiguration()
          .MinimumLevel.Debug()
@@ -33,6 +34,7 @@ internal static class AppBase
         }
 
         void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e) => ManageException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
+        void UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e) => ManageException(e.Exception, "TaskScheduler.UnobservedTaskException");
 
         void LogStart()
         {
