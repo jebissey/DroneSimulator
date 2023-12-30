@@ -1,5 +1,5 @@
-﻿using Serilog.Events;
-using Serilog;
+﻿using Serilog;
+using Serilog.Events;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -18,7 +18,7 @@ internal class ExceptionManager
 
             string source = "";
             if (!string.IsNullOrEmpty(exception.Source) && exception is not InvalidOperationException) source = $"\n(source: {exception.Source})";
-            message = string.Concat( exception.Message, source, innerExceptionMessage);
+            message = string.Concat(exception.Message, source, innerExceptionMessage);
             if (logEventLevel != LogEventLevel.Debug) ShowMessageBox();
         }
         LogException(logEventLevel);

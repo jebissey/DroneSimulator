@@ -1,7 +1,7 @@
-﻿using System.Windows.Threading;
-using System.Windows;
-using Serilog;
+﻿using Serilog;
 using Serilog.Events;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace ADroneSimulator.Bases;
 

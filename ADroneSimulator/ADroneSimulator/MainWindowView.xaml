@@ -15,53 +15,7 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <Style x:Key="JoystickPresenterStyle" TargetType="{x:Type HeaderedContentControl}">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Padding" Value="4"/>
-            <Setter Property="Background" Value="#20151515"/>
-            <Setter Property="Foreground" Value="#151515"/>
-            <Setter Property="BorderBrush" Value="#80151515"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
-                        <Border SnapsToDevicePixels="True" CornerRadius="2"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            Background="{TemplateBinding Background}"
-                            Padding="{TemplateBinding Padding}">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <ContentPresenter x:Name="header"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                                    TextElement.Foreground="{TemplateBinding Foreground}"
-                                    TextElement.FontSize="12"
-                                    Content="{TemplateBinding Header}"
-                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                    ContentStringFormat="{TemplateBinding HeaderStringFormat}"/>
-                                <ContentPresenter x:Name="content" Grid.Row="1" Margin="0,4,0,0"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    TextElement.Foreground="{TemplateBinding Foreground}"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"/>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
     
     <Grid>
@@ -105,62 +59,7 @@
             </h:HelixViewport3D.DefaultCamera>
         </h:HelixViewport3D>
 
-        <StackPanel x:Name="joysticksPanel" Grid.Row="2" Orientation="Horizontal" Opacity="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="15">
-            <StackPanel.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard BeginTime="00:00:00.600">
-                            <DoubleAnimation Storyboard.TargetName="joysticksPanel" Storyboard.TargetProperty="Opacity" To="1" Duration="00:00:00.500" FillBehavior="HoldEnd">
-                                <DoubleAnimation.EasingFunction>
-                                    <QuadraticEase EasingMode="EaseOut"/>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="leftJoystickTranslate" Storyboard.TargetProperty="X" From="-150" Duration="00:00:00.500">
-                                <DoubleAnimation.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="leftJoystickTranslate" Storyboard.TargetProperty="Y" From="70" Duration="00:00:00.500">
-                                <DoubleAnimation.EasingFunction>
-                                    <QuarticEase EasingMode="EaseOut"/>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="rightJoystickTranslate" Storyboard.TargetProperty="X" From="150" Duration="00:00:00.500">
-                                <DoubleAnimation.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="rightJoystickTranslate" Storyboard.TargetProperty="Y" From="70" Duration="00:00:00.500">
-                                <DoubleAnimation.EasingFunction>
-                                    <QuarticEase EasingMode="EaseOut"/>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </StackPanel.Triggers>
-
-            <HeaderedContentControl
-                Style="{StaticResource JoystickPresenterStyle}"
-                Width="120"
-                HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Header="LEFT STICK"
-                Content="{Binding ElementName=window, Path=Gamepad.LeftJoystick, Mode=OneWay}">
-                <HeaderedContentControl.RenderTransform>
-                    <TranslateTransform x:Name="leftJoystickTranslate"/>
-                </HeaderedContentControl.RenderTransform>
-            </HeaderedContentControl>
-            <HeaderedContentControl
-                Style="{StaticResource JoystickPresenterStyle}"
-                Margin="15,0,0,0" Width="120"
-                HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Header="RIGHT STICK"
-                Content="{Binding ElementName=window, Path=Gamepad.RightJoystick, Mode=OneWay}">
-                <HeaderedContentControl.RenderTransform>
-                    <TranslateTransform x:Name="rightJoystickTranslate"/>
-                </HeaderedContentControl.RenderTransform>
-            </HeaderedContentControl>
-        </StackPanel>
+        
 
         <Button Grid.Row="3" Command="{Binding QuitCommand}">
             <materialDesign:PackIcon Width="26" Height="26" Kind="ExitToApp" ToolTip="{lex:Loc Exit}"  />

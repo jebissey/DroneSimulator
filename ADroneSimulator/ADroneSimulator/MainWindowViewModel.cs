@@ -2,14 +2,12 @@
 using ADroneSimulator.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HelixToolkit.Wpf;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using WPFLocalizeExtension.Engine;
 
@@ -17,7 +15,7 @@ namespace ADroneSimulator;
 
 internal partial class MainWindowViewModel : ObservableObject
 {
-
+    private GamePad gamePad = new GamePad();
 
     public MainWindowViewModel()
     {
@@ -28,8 +26,7 @@ internal partial class MainWindowViewModel : ObservableObject
 
         _ = new Scene(Objects);
 
-        _ = new GamePad();
-       
+        gamePad.StartListening(Application.Current.MainWindow);
     }
 
     #region Properties
@@ -42,6 +39,12 @@ internal partial class MainWindowViewModel : ObservableObject
     public void Quit()
     {
         Application.Current.Shutdown();
+    }
+
+    [RelayCommand]
+    public void Customize()
+    {
+        gamePad.ResetDevices();
     }
     #endregion
 
