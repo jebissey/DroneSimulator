@@ -1,0 +1,4 @@
+[submodule "HidRawData"]
+	path = HidRawData
+	url = https://github.com/jebissey/HidRawData.git
+	branch = master
