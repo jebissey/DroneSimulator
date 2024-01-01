@@ -26,7 +26,7 @@ internal partial class MainWindowViewModel : ObservableObject
 
         _ = new Scene(Objects);
 
-        gamePad.StartListening(Application.Current.MainWindow);
+        gamePad.StartListening();
     }
 
     #region Properties
