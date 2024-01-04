@@ -120,4 +120,13 @@
   <data name="Exit" xml:space="preserve">
     <value>Quit application</value>
   </data>
+  <data name="GamepadNotFound" xml:space="preserve">
+    <value>You need a gamepad to play.</value>
+  </data>
+  <data name="MissingGamepad" xml:space="preserve">
+    <value>Missing gamepad</value>
+  </data>
+  <data name="GamepadFound" xml:space="preserve">
+    <value>You play with: </value>
+  </data>
 </root>

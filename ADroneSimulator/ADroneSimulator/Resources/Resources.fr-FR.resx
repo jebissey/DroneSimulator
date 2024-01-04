@@ -120,4 +120,13 @@
   <data name="Exit" xml:space="preserve">
     <value>Quitter l'application</value>
   </data>
+  <data name="GamepadNotFound" xml:space="preserve">
+    <value>Vous avez besoin d'un joystick pour jouer.</value>
+  </data>
+  <data name="MissingGamepad" xml:space="preserve">
+    <value>Joystick manquant</value>
+  </data>
+  <data name="GamepadFound" xml:space="preserve">
+    <value>Vous jouez avec : </value>
+  </data>
 </root>

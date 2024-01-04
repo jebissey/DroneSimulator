@@ -68,5 +68,32 @@ namespace ADroneSimulator.Resources {
                 return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You play with: .
+        /// </summary>
+        internal static string GamepadFound {
+            get {
+                return ResourceManager.GetString("GamepadFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need a gamepad to play..
+        /// </summary>
+        internal static string GamepadNotFound {
+            get {
+                return ResourceManager.GetString("GamepadNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing gamepad.
+        /// </summary>
+        internal static string MissingGamepad {
+            get {
+                return ResourceManager.GetString("MissingGamepad", resourceCulture);
+            }
+        }
     }
 }

@@ -2,3 +2,6 @@
 	path = HidRawData
 	url = https://github.com/jebissey/HidRawData.git
 	branch = master
+[submodule "Gamepad"]
+	path = Gamepad
+	url = https://github.com/jebissey/Gamepad.git

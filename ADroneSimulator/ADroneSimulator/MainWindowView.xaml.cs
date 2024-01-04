@@ -1,6 +1,4 @@
-﻿using System.Windows.Interop;
-
-namespace ADroneSimulator;
+﻿namespace ADroneSimulator;
 
 public partial class MainWindowView : System.Windows.Window
 {

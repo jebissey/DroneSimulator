@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Gamepad\Gamepad.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\DroneSimulator.ico" />
   </ItemGroup>
 

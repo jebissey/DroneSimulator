@@ -2,12 +2,14 @@
 using ADroneSimulator.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Gamepad;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using WPFLocalizeExtension.Engine;
 
@@ -15,7 +17,9 @@ namespace ADroneSimulator;
 
 internal partial class MainWindowViewModel : ObservableObject
 {
-    private GamePad gamePad = new GamePad();
+    #region Fields
+    private GamePad gamePad;
+    #endregion
 
     public MainWindowViewModel()
     {
@@ -26,7 +30,7 @@ internal partial class MainWindowViewModel : ObservableObject
 
         _ = new Scene(Objects);
 
-        gamePad.StartListening();
+        Customize();
     }
 
     #region Properties
@@ -44,8 +48,16 @@ internal partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     public void Customize()
     {
-        gamePad.ResetDevices();
+        if (gamePad != null) GamePad.StopListening();
+        gamePad = new();
+        if (!gamePad.StartListening()) MessageBox.Show(Resources.Resources.GamepadNotFound, Resources.Resources.MissingGamepad, MessageBoxButton.OK, MessageBoxImage.Warning);
+        else MessageBox.Show($"{Resources.Resources.GamepadFound}{GamePad.GetJoystickName()}", "", MessageBoxButton.OK, MessageBoxImage.Information);
     }
+
+    public ICommand WindowClosing => new RelayCommand<CancelEventArgs>((args) =>
+    {
+        GamePad.StopListening();
+    });
     #endregion
 
     #region Private methods
@@ -62,7 +74,5 @@ internal partial class MainWindowViewModel : ObservableObject
         Settings.Default.Language = LocalizeDictionary.Instance.Culture.ToString();
         Settings.Default.Save();
     }
-
-
     #endregion
 }
